@@ -10,12 +10,11 @@ pipeline {
       steps {
         dir(path: 'core/src/main/java/com/sadad/sw/core/lib/') {
           sh 'scripts.sh'
-          dir(path: 'manager/src/main/webapp/') {
+        }
+        dir(path: 'manager/src/main/webapp/') {
             sh 'git config --global url."https://github.com".insteadOf git://github.com'
             sh 'yarn'
             sh 'npm run build-rtl'
-          }
-
         }
 
       }
