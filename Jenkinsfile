@@ -39,6 +39,28 @@ pipeline {
         junit 'target/surefire-reports/*.xml'
       }
     }
+    stage('send manager file') {
+      parallel {
+        stage('send manager file') {
+          steps {
+            sh 'cp ./packages/manager/*.jar  /opt/rahsam/manager'
+            sh 'cd /opt/rahsam/manager'
+            sh 'chmod +x manager.jar'
+            sh 'SPRING_PROFILES_ACTIVE=prod'
+            sh 'service rahmanager restart'
+          }
+        }
+        stage('send worker file') {
+          steps {
+            sh 'cp ./packages/worker/*.jar /opt/rahsam/worker'
+            sh 'cd /opt/rahsam/worker'
+            sh 'chmod +x worker.jar'
+            sh 'SPRING_PROFILES_ACTIVE=prod'
+            sh 'service rahworker restart'
+          }
+        }
+      }
+    }
   }
   environment {
     NODE_TLS_REJECT_UNAUTHORIZED = '0'
