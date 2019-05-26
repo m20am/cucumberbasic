@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git 'https://github.com/m20am/cucumberbasic.git'
+        git(url: 'https://github.com/m20am/cucumberbasic.git', branch: ' feature/WEBIATM-1610/Jenkinsfile', credentialsId: '9dd16acd-16ac-4b39-8720-15137dc44bc2')
       }
     }
     stage('DB2 jar and Yarn') {
