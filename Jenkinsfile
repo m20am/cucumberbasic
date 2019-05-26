@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git(url: 'https://github.com/m20am/cucumberbasic.git', branch: 'master', credentialsId: '72fbeef1-bd69-4916-98d1-f3d9717646ac')
+        git 'https://github.com/m20am/cucumberbasic.git'
       }
     }
     stage('DB2 jar and Yarn') {
