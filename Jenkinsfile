@@ -3,9 +3,14 @@ pipeline {
     agent any
 
     stages {
-        stage ('Build & Test') {
+        stage ('Build') {
             steps {
-                sh 'echo Building... Failure here will fail the build'
+                sh 'echo Building... '
+            }
+        }
+        
+        stage ('Test') {
+            steps {
                 script {
                     try {
                         echo 'Running tests...'
