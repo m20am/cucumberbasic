@@ -1,13 +1,13 @@
 pipeline {
     agent any
     parameters {
-        choice choices: ['YES', 'NO'], description: 'DO you wanna execute yarn command?', name: 'EXECUTE_YARN'
-        booleanParam defaultValue: false, description: 'DO you wanna execute yarn command?', name: 'YARN_EXECUTE_CHECK'
+        choice choices: ['Yes', 'No'], description: 'Do you wanna execute yarn command?', name: 'EXECUTE_YARN'
     }
     stages {
         stage('Build') {
             steps {
                 sh 'echo Building... '
+                sh 'echo parameters ${EXECUTE_YARN}'
             }
         }
         stage('Test') {
