@@ -76,10 +76,10 @@ pipeline {
         stage('Three') {
             when {
                 // Only say hello if a "greeting" is requested
-                expression { params.EXECUTE_YARN == 'No' }
+                expression { return params.EXECUTE_YARN == 'YES' }
             }
             steps {
-                echo "It's No"
+                echo "It's return"
             }
         }
     }
