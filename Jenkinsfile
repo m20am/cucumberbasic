@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Test') {
             when {
-                expression { params.EXECUTE_YARN == 'YES' }
+                expression { params.EXECUTE_YARN == 'Yes' }
             }
             steps {
                 script {
@@ -33,7 +33,7 @@ pipeline {
         stage('POST') {
             when {
                 // Only say hello if a "greeting" is requested
-                expression { params.EXECUTE_YARN == 'NO' }
+                expression { params.EXECUTE_YARN == 'No' }
             }
             steps {
                 script {
