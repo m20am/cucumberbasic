@@ -2,44 +2,40 @@ pipeline {
     agent any
     parameters {
         choice choices: ['Yes', 'No'], description: 'Do you wanna execute yarn command?', name: 'EXECUTE_YARN'
+        booleanParam defaultValue: true, description: 'Do you wanna execute tests?', name: 'EXECUTE_TEST_CHECK'
+        booleanParam defaultValue: false, description: 'Do you wanna execute yarn command?', name: 'ONE'
     }
     stages {
         stage('Build') {
             steps {
                 sh 'echo Building... '
                 sh 'echo parameters ${EXECUTE_YARN}'
+                sh 'echo parameters ${EXECUTE_TEST_CHECK}'
+                sh 'echo parameters ${ONE}'
             }
         }
-        stage('Run Test ${EXECUTE_YARN}') {
+        stage('One') {
             when {
                 expression { params.EXECUTE_YARN == 'Yes' }
             }
             steps {
-                script {
-                    try {
-                        echo 'Running tests...'
-                        mvn test
-                        sh 'exit 1'
-                    }
-                    catch (exc) {
-                        echo 'Testing failed!'
-                        currentBuild.result = 'UNSTABLE'
-                    }
-                }
-
+                echo 'Execute EXECUTE_YARN: ${EXECUTE_YARN}'
             }
         }
-
-        stage('POST') {
+        stage('TWO') {
             when {
-                // Only say hello if a "greeting" is requested
-                expression { params.EXECUTE_YARN == 'No' }
+                expression { params.EXECUTE_TEST_CHECK == true }
             }
             steps {
-                script {
-                    echo 'Running POST...'
-                }
-
+                echo 'Execute EXECUTE_TEST_CHECK: ${EXECUTE_TEST_CHECK}'
+            }
+        }
+        stage('Three') {
+            when {
+                expression { params.ONE == false }
+            }
+            steps {
+                echo 'Execute ONE: ${ONE}'
             }
         }
     }
