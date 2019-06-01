@@ -10,7 +10,7 @@ pipeline {
                 sh 'echo parameters ${EXECUTE_YARN}'
             }
         }
-        stage('Test') {
+        stage('Run Test ${EXECUTE_YARN}') {
             when {
                 expression { params.EXECUTE_YARN == 'Yes' }
             }
