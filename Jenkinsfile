@@ -1,9 +1,9 @@
 pipeline {
     agent any
     parameters {
-        choice choices: ['Yes', 'No'], description: 'Do you wanna execute yarn command?', name: 'EXECUTE_YARN'
         booleanParam defaultValue: true, description: 'Do you wanna execute tests?', name: 'EXECUTE_TEST_CHECK'
         booleanParam defaultValue: false, description: 'Do you wanna execute yarn command?', name: 'ONE'
+        choice choices: ['Yes', 'No'], description: 'Do you wanna execute yarn command?', name: 'EXECUTE_YARN'
     }
     stages {
         stage('Build') {
