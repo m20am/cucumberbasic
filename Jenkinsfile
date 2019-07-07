@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo '${NAME}'
-        NAME='Abedini Moghanaki'
+        env.NAME='Abedini Moghanaki'
         sh 'echo Building... '
         sh 'echo parameters ${EXECUTE_YARN}'
         sh 'echo parameters ${EXECUTE_TEST_CHECK}'
