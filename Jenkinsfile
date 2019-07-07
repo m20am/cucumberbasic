@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo '${NAME}'
+        NAME='Abedini Moghanaki'
         sh 'echo Building... '
         sh 'echo parameters ${EXECUTE_YARN}'
         sh 'echo parameters ${EXECUTE_TEST_CHECK}'
@@ -18,6 +19,7 @@ pipeline {
 
       }
       steps {
+        echo '${NAME}'
         echo 'Execute EXECUTE_YARN: ${EXECUTE_YARN}'
       }
     }
@@ -29,6 +31,7 @@ pipeline {
 
       }
       steps {
+        echo '${NAME}'
         echo 'Execute EXECUTE_TEST_CHECK: ${EXECUTE_TEST_CHECK}'
       }
     }
