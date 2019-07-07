@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo '$NAME'
+        echo '${NAME}'
         sh 'echo Building... '
         sh 'echo parameters ${EXECUTE_YARN}'
         sh 'echo parameters ${EXECUTE_TEST_CHECK}'
